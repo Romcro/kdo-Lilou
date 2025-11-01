@@ -48,12 +48,17 @@ function showGifts() {
 function selectGift(giftIndex) {
     selectedGiftNumber = giftIndex;
 
+    // Map gift index to actual image file (image3.png doesn't exist)
+    // Gifts: 0→image0, 1→image1, 2→image2, 3→image4, 4→image5, 5→image6, 6→image7
+    const imageMap = [0, 1, 2, 4, 5, 6, 7];
+    const actualImageIndex = imageMap[giftIndex];
+
     // Update confirmation screen
     const selectedImage = document.getElementById('selected-gift-image');
     const giftNumberText = document.getElementById('gift-number-text');
 
     if (selectedImage) {
-        selectedImage.src = `pictures/image${giftIndex}.png`;
+        selectedImage.src = `pictures/image${actualImageIndex}.png`;
     }
 
     if (giftNumberText) {
