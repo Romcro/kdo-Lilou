@@ -99,8 +99,9 @@ function showEasterEggPopup(message, emoji = '🎉') {
         max-width: 90%;
         animation: popIn 0.5s ease-out;
         line-height: 1.6;
+        cursor: pointer;
     `;
-    popup.innerHTML = `<div style="font-size: 3rem; margin-bottom: 15px;">${emoji}</div>${message}`;
+    popup.innerHTML = `<div style="font-size: 3rem; margin-bottom: 15px;">${emoji}</div>${message}<div style="font-size: 0.9rem; margin-top: 20px; opacity: 0.8;">👆 Clique pour fermer</div>`;
     document.body.appendChild(popup);
 
     createConfetti();
@@ -109,9 +110,22 @@ function showEasterEggPopup(message, emoji = '🎉') {
         navigator.vibrate([100, 50, 100]);
     }
 
-    setTimeout(() => {
+    // Close popup on click/tap
+    const closePopup = () => {
         popup.style.animation = 'popIn 0.5s ease-out reverse';
         setTimeout(() => popup.remove(), 500);
+        popup.removeEventListener('click', closePopup);
+        popup.removeEventListener('touchend', closePopup);
+    };
+
+    popup.addEventListener('click', closePopup);
+    popup.addEventListener('touchend', closePopup);
+
+    // Auto-close after 5 seconds
+    setTimeout(() => {
+        if (document.body.contains(popup)) {
+            closePopup();
+        }
     }, 5000);
 }
 
@@ -120,7 +134,10 @@ function triggerDateEasterEgg() {
     const messages = [
         "Il y a exactement 18 ans, le monde découvrait Lilou ! 🌟",
         "Le 4 octobre 2007, un jeudi magique où tout a commencé ! 🎂",
-        "6570 jours depuis ta naissance... et toujours aussi géniale ! ⭐"
+        "6570 jours depuis ta naissance... et toujours aussi géniale ! ⭐",
+        "Née en automne, saison des récoltes et des nouvelles aventures ! 🍂",
+        "Le 4 octobre, c'est aussi la fête de Saint-François... comme François c'est ton jour ! 🙏",
+        "En octobre 2007, Harry Potter 7 était le livre le plus vendu au monde ! 📚✨"
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     showEasterEggPopup(randomMessage, '📅');
@@ -128,8 +145,17 @@ function triggerDateEasterEgg() {
 
 // Easter Egg: Music Click
 function triggerMusicEasterEgg() {
-    const message = `Le jour de ta naissance, "Stronger" de Kanye West était N°1 aux USA ! 🎵<br><br>🎤 "That that don't kill me, can only make me stronger" 🎤<br><br><a href="https://www.youtube.com/watch?v=PsO6ZnUZI0g" target="_blank" style="color: #ffd700; text-decoration: underline;">🎬 Voir le clip culte ! 🎬</a>`;
-    showEasterEggPopup(message, '🎵');
+    const messages = [
+        `Le jour de ta naissance, "Stronger" de Kanye West était N°1 aux USA ! 🎵<br><br>🎤 "That that don't kill me, can only make me stronger" 🎤<br><br><a href="https://www.youtube.com/watch?v=PsO6ZnUZI0g" target="_blank" style="color: #ffd700; text-decoration: underline;">🎬 Voir le clip culte ! 🎬</a>`,
+        `En France le 4 octobre 2007, "Don't Stop the Music" de Rihanna était N°1 ! 💃🎶<br><br>🎵 Please don't stop the music ! 🎵`,
+        "En 2007, Rihanna dominait aussi avec 'Umbrella' ! ☔ Ella ella eh eh ! 🎶",
+        "2007 : L'année de 'Apologize' de OneRepublic... It's too late to apologize ! 🎸",
+        "Amy Winehouse sortait 'Back to Black' en 2007... une légende ! 🖤🎤",
+        "Fun fact : En 2007, les gens téléchargeaient ENCORE de la musique sur iTunes ! 💿📱",
+        "Au Japon en 2007, la J-Pop dominait avec des groupes comme Arashi et KAT-TUN ! 🇯🇵🎌"
+    ];
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    showEasterEggPopup(randomMessage, '🎵');
 }
 
 // Easter Egg: World Events
@@ -137,7 +163,13 @@ function triggerSecretEasterEgg() {
     const messages = [
         "Le 4 octobre, c'est la Journée Mondiale des Animaux ! 🐾",
         "En 2007, l'iPhone venait juste de sortir (3 mois avant) ! 📱",
-        "Fun fact : Le 4 octobre 1957 (50 ans avant toi), Spoutnik était lancé dans l'espace ! 🚀"
+        "Fun fact : Le 4 octobre 1957 (50 ans avant toi), Spoutnik était lancé dans l'espace ! 🚀",
+        "En octobre 2007, Al Gore recevait le Prix Nobel de la Paix pour le climat ! 🌍🏆",
+        "2007 : L'année où Facebook ouvrait au grand public (plus que Harvard) ! 👥",
+        "En 2007, YouTube n'avait que 2 ans... aujourd'hui tu ne peux plus t'en passer ! 📺",
+        "Le premier Kindle d'Amazon sortait en novembre 2007 ! 📖✨",
+        "En 2007, Twitter avait à peine 1 an et tout le monde tweetait en 140 caractères ! 🐦",
+        "Breaking Bad allait commencer en 2008... tu es née juste avant cette série culte ! 🧪"
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     showEasterEggPopup(randomMessage, '🌍');
@@ -147,9 +179,14 @@ function triggerSecretEasterEgg() {
 function triggerNumberEasterEgg() {
     const messages = [
         "18 ans = 6570 jours de bonheur ! 🎊",
+        "18 ans = 157 680 heures de vie ! ⏰",
         "18 ans = L'âge de la liberté ! 🗽",
         "18 : Le chiffre parfait pour faire la fête ! 🥳",
-        "En 2007, Facebook avait seulement 3 ans ! Tu as grandi avec les réseaux sociaux ! 📱"
+        "18 ans = Majeure, responsable... mais toujours notre petite Lilou ! 💕",
+        "En 2007, Facebook avait seulement 3 ans ! Tu as grandi avec les réseaux sociaux ! 📱",
+        "Tu as vécu 18 anniversaires... mais celui-ci est LE plus important ! 🎂👑",
+        "À 18 ans, tout devient possible : vote, voyages, nouvelles aventures ! 🌟",
+        "18 ans = 216 mois d'amour et de souvenirs ! 💖"
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     showEasterEggPopup(randomMessage, '1️⃣8️⃣');
@@ -165,7 +202,14 @@ function triggerCakeEasterEgg() {
     } else if (cakeClickCount === 3) {
         showEasterEggPopup("Encore un peu... 🤫", '🍰');
     } else if (cakeClickCount === 5) {
-        showEasterEggPopup("Tu l'as trouvé ! 🎉<br><br>Le secret : Tu es géniale et on t'aime ! 💝<br><br>Maintenant choisis ton cadeau ! 🎁", '👑');
+        const secretMessages = [
+            "Tu l'as trouvé ! 🎉<br><br>Le secret : Tu es géniale et on t'aime ! 💝<br><br>Maintenant choisis ton cadeau ! 🎁",
+            "Bravo ! 🎊<br><br>Tu as découvert le secret du gâteau !<br><br>Saviez-vous que le record du monde du plus gros gâteau d'anniversaire pesait 57 tonnes ? 😱🎂",
+            "Félicitations ! 👑<br><br>Tu es officiellement une chasseuse d'easter eggs !<br><br>Maintenant, choisis ton cadeau ! 🎁✨",
+            "Incroyable ! 🌟<br><br>Tu as trouvé le message caché !<br><br>Petit secret : tu es la meilleure ! 💖"
+        ];
+        const randomSecret = secretMessages[Math.floor(Math.random() * secretMessages.length)];
+        showEasterEggPopup(randomSecret, '👑');
         cakeClickCount = 0;
     }
 }
