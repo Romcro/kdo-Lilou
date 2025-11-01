@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Joyeux Anniversaire !</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Intro Screen -->
+        <section id="intro-screen" class="screen active">
+            <div class="confetti"></div>
+            <div class="intro-content">
+                <h1 class="title animate-bounce"><span class="emoji">🎉</span> Joyeux Anniversaire Lilou <span class="emoji">🎉</span></h1>
+
+                <!-- Easter Egg: Clickable date -->
+                <div class="birthday-date" onclick="triggerDateEasterEgg()">
+                    04.10.2007 ➡️ 04.10.2025
+                </div>
+
+                <div class="lottie-cake" onclick="triggerCakeEasterEgg()">
+                    <dotlottie-wc src="https://lottie.host/ad10b498-7f14-4adf-a574-08e607d673ff/l152EvocTi.lottie" autoplay loop></dotlottie-wc>
+                </div>
+
+                <div class="message">
+                    <h2>18 ans, c'est l'âge de tous les possibles !</h2>
+                    <p class="wish">
+                        Pour fêter ton anniversaire, nous avons une surprise spéciale...
+                    </p>
+                    <p class="wish-highlight">
+                        <span class="emoji">🎁</span> Choisis ton cadeau préféré ! <span class="emoji">🎁</span>
+                    </p>
+                </div>
+
+                <!-- Hidden Easter Eggs -->
+                <div class="easter-eggs">
+                    <div class="easter-egg emoji" onclick="triggerMusicEasterEgg()">
+                        🎵
+                    </div>
+                    <div class="easter-egg emoji" onclick="triggerSecretEasterEgg()">
+                        🌍
+                    </div>
+                    <div class="easter-egg emoji" onclick="triggerNumberEasterEgg()">
+                        1️⃣8️⃣
+                    </div>
+                </div>
+
+                <button class="main-btn" onclick="showGifts()">
+                    Découvrir mes cadeaux <span class="emoji">✨</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Gift Selection Screen -->
+        <section id="gift-screen" class="screen">
+            <div class="gift-header">
+                <button class="back-btn" onclick="goBackToIntro()">← Retour</button>
+                <h2><span class="emoji">🎁</span> Choisis ton cadeau <span class="emoji">🎁</span></h2>
+                <p>Clique sur celui que tu préfères !</p>
+            </div>
+
+            <div class="gifts-grid">
+                <div class="gift-card" onclick="selectGift(0)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image0.png" alt="Cadeau 1">
+                        <div class="gift-overlay">
+                            <span class="gift-number">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(1)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image1.png" alt="Cadeau 2">
+                        <div class="gift-overlay">
+                            <span class="gift-number">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(2)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image2.png" alt="Cadeau 3">
+                        <div class="gift-overlay">
+                            <span class="gift-number">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(3)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image3.png" alt="Cadeau 4">
+                        <div class="gift-overlay">
+                            <span class="gift-number">4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(4)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image4.png" alt="Cadeau 5">
+                        <div class="gift-overlay">
+                            <span class="gift-number">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(5)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image5.png" alt="Cadeau 6">
+                        <div class="gift-overlay">
+                            <span class="gift-number">6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(6)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image6.png" alt="Cadeau 7">
+                        <div class="gift-overlay">
+                            <span class="gift-number">7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gift-card" onclick="selectGift(7)">
+                    <div class="gift-image-container">
+                        <img src="pictures/image7.png" alt="Cadeau 8">
+                        <div class="gift-overlay">
+                            <span class="gift-number">8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confirmation Screen -->
+        <section id="confirmation-screen" class="screen">
+            <div class="confirmation-content">
+                <h2><span class="emoji">🎉</span> Excellent choix ! <span class="emoji">🎉</span></h2>
+                <div class="selected-gift">
+                    <img id="selected-gift-image" src="" alt="Ton cadeau">
+                </div>
+                <p class="confirmation-text">
+                    Tu as choisi le cadeau <span id="gift-number-text">X</span> !
+                </p>
+                <p class="confirmation-message">
+                    Montre cet écran pour recevoir ton cadeau <span class="emoji">💝</span>
+                </p>
+                <button class="main-btn" onclick="changeChoice()">
+                    Changer de choix
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

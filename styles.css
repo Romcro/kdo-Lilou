@@ -1,0 +1,459 @@
+/* Mobile-First Design */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Glassmorphism */
+.intro-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0;
+    padding: 60px 40px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.title {
+    font-size: 2rem;
+    color: #667eea;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Emoji reset to original colors */
+.emoji {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    color: inherit;
+}
+
+.animate-bounce {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Birthday Date */
+.birthday-date {
+    font-size: 1rem;
+    color: #667eea;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.birthday-date:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Lottie Cake */
+.lottie-cake {
+    margin: 20px auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lottie-cake dotlottie-wc {
+    width: 100%;
+    height: 100%;
+}
+
+.lottie-cake:active {
+    transform: scale(0.95);
+}
+
+/* Message */
+.message {
+    margin: 25px 0;
+}
+
+.message h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.wish {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.wish-highlight {
+    color: #f5576c;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.main-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 10px;
+    -webkit-appearance: none;
+}
+
+.main-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 15px rgba(245, 87, 108, 0.3);
+}
+
+/* Easter Eggs */
+.easter-eggs {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0 10px;
+}
+
+.easter-egg {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+    animation: float-gentle 3s ease-in-out infinite;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.easter-egg:active {
+    transform: scale(1.2) rotate(15deg);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes float-gentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.easter-egg:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.easter-egg:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.easter-egg:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* Gift Selection Screen */
+.gift-header {
+    text-align: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 25px;
+    border-radius: 0;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: none;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.gift-header h2 {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.gift-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Gifts Grid */
+.gifts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    padding-bottom: 20px;
+}
+
+.gift-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    aspect-ratio: 1;
+}
+
+.gift-card:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.gift-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gift-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gift-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gift-card:active .gift-overlay {
+    opacity: 1;
+}
+
+.gift-number {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Confirmation Screen */
+.confirmation-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0;
+    padding: 60px 40px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.confirmation-content h2 {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.selected-gift {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.selected-gift img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.confirmation-text {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#gift-number-text {
+    color: #f5576c;
+    font-size: 1.5rem;
+}
+
+.confirmation-message {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Confetti */
+.confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #f0f;
+    top: -10px;
+    animation: fall linear forwards;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Tablet and larger */
+@media (min-width: 600px) {
+    .screen {
+        padding: 40px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .gifts-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 700px;
+    }
+
+    .gift-header h2 {
+        font-size: 2rem;
+    }
+
+    .message h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .gifts-grid {
+        max-width: 900px;
+    }
+}
